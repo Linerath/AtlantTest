@@ -5,8 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Configuration;
-using AtlantTest.Services;
-using AtlantTest.Services.Implementations;
+using AtlantTest.Repositories;
+using AtlantTest.Repositories.Implementations;
 
 namespace AtlantTest.Infrastructure
 {
@@ -33,6 +33,7 @@ namespace AtlantTest.Infrastructure
         private void AddBindings()
         {
             kernel.Bind<IStorekeeperRepository>().To<StorekeeperRepository>();
+            kernel.Bind<IDetailRepository>().To<DetailRepository>();
         }
     }
 }

@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AtlantTest.Services
+namespace AtlantTest.Repositories
 {
-    public interface IStorekeeperRepository
+    public interface IDetailRepository
     {
-        IQueryable<Storekeeper> GetAll();
+        IQueryable<Detail> GetAll();
+        void Add(Detail detail);
     }
 }

@@ -178,8 +178,10 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\Implementations\StorekeeperRepository.cs" />
-    <Compile Include="Services\IStorekeeperRepository.cs" />
+    <Compile Include="Repositories\IDetailRepository.cs" />
+    <Compile Include="Repositories\Implementations\DetailRepository.cs" />
+    <Compile Include="Repositories\Implementations\StorekeeperRepository.cs" />
+    <Compile Include="Repositories\IStorekeeperRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />

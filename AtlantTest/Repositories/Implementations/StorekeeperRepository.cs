@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace AtlantTest.Services.Implementations
+namespace AtlantTest.Repositories.Implementations
 {
     public class StorekeeperRepository : IStorekeeperRepository
     {
@@ -14,6 +14,11 @@ namespace AtlantTest.Services.Implementations
         public IQueryable<Storekeeper> GetAll()
         {
             return context.Storekeepers.AsQueryable();
+        }
+
+        public void Add(Storekeeper storekeeper)
+        {
+            context.Storekeepers.Add(storekeeper);
         }
     }
 }

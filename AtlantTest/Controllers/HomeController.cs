@@ -1,5 +1,5 @@
 ﻿using AtlantTest.Database;
-using AtlantTest.Services;
+using AtlantTest.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,16 +11,17 @@ namespace AtlantTest.Controllers
     public class HomeController : Controller
     {
         private IStorekeeperRepository storekeeperRepository;
+        private IDetailRepository detailRepository;
 
-        public HomeController(IStorekeeperRepository storekeeperRepository)
+        public HomeController(IStorekeeperRepository storekeeperRepository, IDetailRepository detailRepository)
         {
             this.storekeeperRepository = storekeeperRepository;
+            this.detailRepository = detailRepository;
         }
 
         public ActionResult Index()
         {
-            var s = storekeeperRepository.GetAll();
-            return View(s);
+            return View();
         }
     }
 }
