@@ -159,6 +159,10 @@
     <Compile Include="Migrations\201805041257002_init.Designer.cs">
       <DependentUpon>201805041257002_init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805041325411_DetailsChanges.cs" />
+    <Compile Include="Migrations\201805041325411_DetailsChanges.Designer.cs">
+      <DependentUpon>201805041325411_DetailsChanges.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -201,6 +205,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Services\Implementations\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -218,6 +223,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201805041257002_init.resx">
       <DependentUpon>201805041257002_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805041325411_DetailsChanges.resx">
+      <DependentUpon>201805041325411_DetailsChanges.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
