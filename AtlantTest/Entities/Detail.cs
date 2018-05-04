@@ -11,8 +11,8 @@ namespace AtlantTest.Entities
         public String NomenclatureCode { get; set; }
         public String Name { get; set; }
         public int Quantity { get; set; }
-        public Storekeeper Storekeeper { get; set; }
+        public int StorekeeperId { get; set; }
         public DateTime CreationDate { get; set; }
-        public DateTime DeleteDate { get; set; }
+        public DateTime? DeleteDate { get; set; }
     }
 }

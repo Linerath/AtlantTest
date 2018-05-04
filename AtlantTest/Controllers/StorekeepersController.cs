@@ -8,30 +8,23 @@ using System.Web.Mvc;
 
 namespace AtlantTest.Controllers
 {
-    public class HomeController : Controller
+    public class StorekeepersController : Controller
     {
         private IStorekeeperRepository storekeeperRepository;
-        private IDetailRepository detailRepository;
 
-        public HomeController(IStorekeeperRepository storekeeperRepository, IDetailRepository detailRepository)
+        public StorekeepersController(IStorekeeperRepository storekeeperRepository)
         {
             this.storekeeperRepository = storekeeperRepository;
-            this.detailRepository = detailRepository;
         }
 
-        public ActionResult Index()
+        public ActionResult All()
         {
             return View();
         }
 
-        public JsonResult GetStorekeepers()
+        public JsonResult GetAll()
         {
             return Json(storekeeperRepository.GetAll(), JsonRequestBehavior.AllowGet);
-        }
-
-        public JsonResult GetDetails()
-        {
-            return Json(detailRepository.GetAll(), JsonRequestBehavior.AllowGet);
         }
     }
 }

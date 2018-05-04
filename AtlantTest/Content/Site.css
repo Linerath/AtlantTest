@@ -1,5 +1,4 @@
 ﻿body {
-    padding-top: 50px;
     padding-bottom: 20px;
 }
 
@@ -21,4 +20,21 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+
+
+
+
+.tabled-row {
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+.row {
+    margin-top: 2%;
+}
+
+thead:hover {
+    background-color: #32383e !important;
 }
