@@ -1,7 +1,23 @@
-﻿@{
+﻿@using AtlantTest.Entities;
+@model IEnumerable<Storekeeper>
+
+@{
     ViewBag.Title = "Home";
 }
 
 <div class="row">
-    
+
+    <table>
+        <tbody>
+            @foreach (var s in Model)
+            {
+                <tr>
+                    <td>@s.Name</td>
+                    <td>@s.Surname</td>
+                    <td>@s.Patronymic</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
 </div>

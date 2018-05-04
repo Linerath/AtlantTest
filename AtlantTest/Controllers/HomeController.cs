@@ -1,4 +1,5 @@
 ﻿using AtlantTest.Database;
+using AtlantTest.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,17 @@ namespace AtlantTest.Controllers
 {
     public class HomeController : Controller
     {
-        private EFDbContext context = new EFDbContext();
+        private IStorekeeperRepository storekeeperRepository;
+
+        public HomeController(IStorekeeperRepository storekeeperRepository)
+        {
+            this.storekeeperRepository = storekeeperRepository;
+        }
 
         public ActionResult Index()
         {
-            return View();
+            var s = storekeeperRepository.GetAll();
+            return View(s);
         }
     }
 }
