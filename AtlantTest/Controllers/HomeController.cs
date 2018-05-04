@@ -23,5 +23,15 @@ namespace AtlantTest.Controllers
         {
             return View();
         }
+
+        public JsonResult GetStorekeepers()
+        {
+            return Json(storekeeperRepository.GetAll(), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetDetails()
+        {
+            return Json(detailRepository.GetAll(), JsonRequestBehavior.AllowGet);
+        }
     }
 }
