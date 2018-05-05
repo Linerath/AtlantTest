@@ -188,11 +188,17 @@
       <DependentUpon>201805042207471_DetailsChangedFK.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\DetailModel.cs" />
+    <Compile Include="Models\StorekeepersModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IDetailRepository.cs" />
     <Compile Include="Repositories\Implementations\DetailRepository.cs" />
     <Compile Include="Repositories\Implementations\StorekeeperRepository.cs" />
     <Compile Include="Repositories\IStorekeeperRepository.cs" />
+    <Compile Include="Services\IDetailsService.cs" />
+    <Compile Include="Services\Implementations\DetailsService.cs" />
+    <Compile Include="Services\Implementations\StorekeepersService.cs" />
+    <Compile Include="Services\IStorekeepersService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -288,7 +294,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -2,15 +2,12 @@
 
 storekeepersApp.controller('MainCtrl', function ($scope, StorekeepersService) {
 
-    getStorekeepers();
-
-    function getStorekeepers() {
+    $scope.getStorekeepers = function() {
         StorekeepersService.getStorekeepers()
             .then(
-                function (response) {
-                    console.log(response);
-                    $scope.storekeepers = response.data;
-                    //console.log($scope.storekeepers);
+            function (response) {
+                    $scope.storekeepersData = response.data;
+                    console.log($scope.storekeepersData);
                 }, function (error) {
                     console.log(error);
                 });

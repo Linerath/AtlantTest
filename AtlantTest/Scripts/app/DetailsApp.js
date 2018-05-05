@@ -2,14 +2,11 @@
 
 detailsApp.controller('MainCtrl', function ($scope, DetailsService) {
 
-    getDetails();
-
-    function getDetails() {
+    $scope.getDetails = function() {
         DetailsService.getDetails()
             .then(
                 function (response) {
-                    $scope.details = response.data;
-                    console.log($scope.details);
+                    $scope.detailsData = response.data;
                 }, function (error) {
                     console.log(error);
                 });

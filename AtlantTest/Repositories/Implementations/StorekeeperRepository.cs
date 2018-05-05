@@ -16,9 +16,9 @@ namespace AtlantTest.Repositories.Implementations
             return context.Storekeepers.AsQueryable();
         }
 
-        public void Add(Storekeeper storekeeper)
+        public Storekeeper Get(int Id)
         {
-            context.Storekeepers.Add(storekeeper);
+            return context.Storekeepers.FirstOrDefault(x => x.Id == Id);
         }
     }
 }

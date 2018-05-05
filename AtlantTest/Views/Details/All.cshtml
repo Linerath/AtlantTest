@@ -4,7 +4,12 @@
 
 <h2 style="margin-top: 2%">New detail</h2>
 
-<div class="col-sm-10">
+<div class="new-section" style="width: 600px">
+
+    <div class="form-group">
+        <label for="cde" class="col-form-label">Nomeclature code</label>
+        <input id="code" name="code" type="text" class="form-control" placeholder="Nomenclature code" />
+    </div>
 
     <div class="form-group">
         <label for="name" class="col-form-label">Name</label>
@@ -12,22 +17,21 @@
     </div>
 
     <div class="form-group">
-        <label for="surname" class="col-form-label">Surname</label>
-        <input id="surname" name="surname" type="text" class="form-control" placeholder="Surname" />
+        <label for="quantity" class="col-form-label">Quantity</label>
+        <input id="quantity" name="quantity" type="number" min="0" value="0" class="form-control" placeholder="Quantity" />
     </div>
 
     <div class="form-group">
-        <label for="patronymic" class="col-form-label">Patronymic</label>
-        <input id="patronymic" name="patronymic" type="text" class="form-control" placeholder="Patronymic" />
+        <button class="btn btn-info">Select storekeeper...</button>
     </div>
 
-    <button class="btn btn-secondary">Create</button>
+    <button class="btn btn-secondary"><i class="fa fa-plus-circle"></i> Create</button>
 </div>
 
 <hr />
 
 <div class="row tabled-row">
-    <div class="col col-sm-12 card p-0" ng-app="DetailsApp" ng-controller="MainCtrl">
+    <div class="col col-sm-12 card p-0" ng-app="DetailsApp" ng-controller="MainCtrl" ng-init="getDetails()">
 
         <div class="card-header form-inline">
             <i class="fa fa-minus"></i>
@@ -35,33 +39,34 @@
         </div>
 
         <table class="table table-striped table-hover card-body" style="margin-bottom: 0px">
-                <thead class="table-dark">
-                    <tr>
-                        <th>NomenclatureCode</th>
-                        <th>Name</th>
-                        <th>Quantity</th>
-                        <th>StorekeeperId</th>
-                        <th>CreationDate</th>
-                        <th>DeleteDate</th>
-                        <th>Delete</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="d in details">
-                        <td>{{d.NomenclatureCode}}</td>
-                        <td>{{d.Name}}</td>
-                        <td>{{d.Quantity}}</td>
-                        <td>{{d.StorekeeperId}}</td>
-                        <td>{{d.CreationDate}}</td>
-                        <td>{{d.DeleteDate}}</td>
-                        <td><a href="#"><i class="fa fa-user-times"></i></a></td>
-                    </tr>
-                </tbody>
-            </table>
+            <thead class="table-dark">
+                <tr>
+                    <th>Nomenclature code</th>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Storekeeper name</th>
+                    <th>Creation date</th>
+                    <th>Delete date</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="d in detailsData">
+                    <td>{{d.Detail.NomenclatureCode}}</td>
+                    <td>{{d.Detail.Name}}</td>
+                    <td>{{d.Detail.Quantity}}</td>
+                    <td>{{d.Storekeeper.Name}}</td>
+                    <td>{{d.Detail.CreationDate}}</td>
+                    <td>{{d.Detail.DeleteDate}}</td>
+                    <td><a href="#"><i class="fa fa-minus-circle"></i></a></td>
+                </tr>
+            </tbody>
+        </table>
 
     </div>
 </div>
 
 @section scripts{
     <script src="~/Scripts/app/DetailsApp.js"></script>
+    <script src="~/Scripts/app/StorekeepersApp.js"></script>
 }

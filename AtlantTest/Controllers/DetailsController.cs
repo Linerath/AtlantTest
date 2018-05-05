@@ -1,4 +1,5 @@
 ﻿using AtlantTest.Repositories;
+using AtlantTest.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,11 @@ namespace AtlantTest.Controllers
 {
     public class DetailsController : Controller
     {
-        private IDetailRepository detailRepository;
+        private IDetailsService detailsService;
 
-        public DetailsController(IDetailRepository detailRepository)
+        public DetailsController(IDetailsService detailsService)
         {
-            this.detailRepository = detailRepository;
+            this.detailsService = detailsService;   
         }
 
         public ActionResult All()
@@ -23,7 +24,7 @@ namespace AtlantTest.Controllers
 
         public JsonResult GetAll()
         {
-            var details = detailRepository.GetAll();
+            var details = detailsService.GetAllDetailsData();
             return Json(details, JsonRequestBehavior.AllowGet);
         }
     }

@@ -4,7 +4,7 @@
 
 <h2 style="margin-top: 2%">New storekeeper</h2>
 
-<div class="col-sm-10">
+<div class="new-section">
 
     <div class="form-group">
         <label for="name" class="col-form-label">Name</label>
@@ -21,13 +21,13 @@
         <input id="patronymic" name="patronymic" type="text" class="form-control" placeholder="Patronymic" />
     </div>
 
-    <button class="btn btn-secondary"><i class="fa fa-user-plus"></i>   Create</button>
+    <button class="btn btn-secondary"><i class="fa fa-user-plus"></i> Create</button>
 </div>
 
 <hr />
 
 <div class="row tabled-row">
-    <div class="col col-sm-12 card p-0" ng-app="StorekeepersApp" ng-controller="MainCtrl">
+    <div class="col col-sm-12 card p-0" ng-app="StorekeepersApp" ng-controller="MainCtrl" ng-init="getStorekeepers()">
 
         <div class="card-header form-inline">
             <i class="fa fa-minus"></i>
@@ -40,14 +40,16 @@
                     <th>Name</th>
                     <th>Surname</th>
                     <th>Patronymic</th>
+                    <th>Details quantity</th>
                     <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="s in storekeepers">
-                    <td>{{s.Name}}</td>
-                    <td>{{s.Surname}}</td>
-                    <td>{{s.Patronymic}}</td>
+                <tr ng-repeat="s in storekeepersData">
+                    <td>{{s.Storekeeper.Name}}</td>
+                    <td>{{s.Storekeeper.Surname}}</td>
+                    <td>{{s.Storekeeper.Patronymic}}</td>
+                    <td>{{s.DetailsQuantity}}</td>
                     <td><a href="#"><i class="fa fa-user-times"></i></a></td>
                 </tr>
             </tbody>

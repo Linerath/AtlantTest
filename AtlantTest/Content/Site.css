@@ -24,7 +24,9 @@ textarea {
 
 
 
-
+.new-section {
+    width: 280px;
+}
 
 .tabled-row {
     padding-left: 1%;

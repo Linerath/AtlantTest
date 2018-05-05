@@ -10,6 +10,6 @@ namespace AtlantTest.Repositories
     public interface IStorekeeperRepository
     {
         IQueryable<Storekeeper> GetAll();
-        void Add(Storekeeper storekeeper);
+        Storekeeper Get(int Id);
     }
 }

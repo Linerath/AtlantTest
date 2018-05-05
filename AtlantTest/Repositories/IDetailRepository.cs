@@ -10,6 +10,6 @@ namespace AtlantTest.Repositories
     public interface IDetailRepository
     {
         IQueryable<Detail> GetAll();
-        void Add(Detail detail);
+        Detail GetByStorekeeperId(int storekeeperId);
     }
 }

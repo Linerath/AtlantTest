@@ -1,5 +1,6 @@
 ﻿using AtlantTest.Database;
 using AtlantTest.Repositories;
+using AtlantTest.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +11,11 @@ namespace AtlantTest.Controllers
 {
     public class StorekeepersController : Controller
     {
-        private IStorekeeperRepository storekeeperRepository;
+        private IStorekeepersService storekeepersService;
 
-        public StorekeepersController(IStorekeeperRepository storekeeperRepository)
+        public StorekeepersController(IStorekeepersService storekeepersService)
         {
-            this.storekeeperRepository = storekeeperRepository;
+            this.storekeepersService = storekeepersService;
         }
 
         public ActionResult All()
@@ -24,7 +25,8 @@ namespace AtlantTest.Controllers
 
         public JsonResult GetAll()
         {
-            return Json(storekeeperRepository.GetAll(), JsonRequestBehavior.AllowGet);
+            var storekeepers = storekeepersService.GetAllStorekeepersData();
+            return Json(storekeepers, JsonRequestBehavior.AllowGet);
         }
     }
 }

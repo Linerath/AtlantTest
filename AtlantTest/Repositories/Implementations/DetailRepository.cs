@@ -11,14 +11,14 @@ namespace AtlantTest.Repositories.Implementations
     {
         private EFDbContext context = new EFDbContext();
 
-        public void Add(Detail detail)
-        {
-            context.Details.Add(detail);
-        }
-
         public IQueryable<Detail> GetAll()
         {
             return context.Details.AsQueryable();
+        }
+
+        public Detail GetByStorekeeperId(int storekeeperId)
+        {
+            return context.Details.FirstOrDefault(x => x.StorekeeperId == storekeeperId);
         }
     }
 }
