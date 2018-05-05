@@ -2,9 +2,10 @@
     ViewBag.Title = "Home";
 }
 
-<h2 style="margin-top: 2%">New detail</h2>
 
-<div class="new-section-col-2" ng-controller="StorekeepersCtrl" ng-init="getStorekeepers()">
+<div class="bordered-10 new-section-col-2" ng-controller="storekeepersCtrl">
+    
+    <h2>New detail</h2>
 
     <div class="form-row">
         <div class="col">
@@ -42,7 +43,7 @@
 
 <hr />
 
-<div class="row tabled-row" ng-controller="DetailsCtrl" ng-init="getDetails()">
+<div class="row tabled-row" ng-controller="detailsCtrl">
     <div class="col col-sm-12 card p-0">
 
         <div id="tableHeader" class="card-header form-inline" data-toggle="collapse" data-target="#detailsTable" aria-expanded="false">
@@ -105,7 +106,6 @@
 
             $("#tableHeader").click(function () {
                 var i = $("#panelInd");
-                console.log(i);
                 if (i.hasClass("fa-minus")) {
                     i.removeClass("fa-minus");
                     i.addClass("fa-plus");

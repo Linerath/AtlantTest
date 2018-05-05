@@ -2,9 +2,9 @@
     ViewBag.Title = "Home";
 }
 
-<h2 style="margin-top: 2%">New storekeeper</h2>
+<div class="bordered-10 new-section-col-1">
 
-<div class="new-section-col-1">
+    <h2>New storekeeper</h2>
 
     <div class="form-group">
         <label for="name" class="col-form-label">Name</label>
@@ -27,10 +27,10 @@
 <hr />
 
 <div class="row tabled-row">
-    <div class="col col-sm-12 card p-0" ng-controller="StorekeepersCtrl" ng-init="getStorekeepers()">
+    <div class="col col-sm-12 card p-0" ng-controller="storekeepersCtrl">
 
         <div id="tableHeader" class="card-header form-inline" data-toggle="collapse" data-target="#detailsTable" aria-expanded="false">
-            <i id="panelInd" class="fa fa-minus"></i>
+            <i id="panelInd" class="fa fa-plus"></i>
             <h2 style="margin-left: 1%">All storekeepers</h2>
         </div>
 
@@ -67,7 +67,6 @@
 
             $("#tableHeader").click(function () {
                 var i = $("#panelInd");
-                console.log(i);
                 if (i.hasClass("fa-minus")) {
                     i.removeClass("fa-minus");
                     i.addClass("fa-plus");

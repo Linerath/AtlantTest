@@ -21,10 +21,16 @@ namespace AtlantTest
                       "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
-                        "~/Scripts/angular.js"));
+                        "~/Scripts/angular.js",
+                        "~/Scripts/angular-route.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angularApp").Include(
-                        "~/Scripts/app/MainApp.js"));
+                        "~/Scripts/app/mainApp.js",
+                        "~/Scripts/app/services/detailsService.js",
+                        "~/Scripts/app/services/storekeepersService.js",
+                        "~/Scripts/app/controllers/detailsCtrl.js",
+                        "~/Scripts/app/controllers/storekeepersCtrl.js"
+                        ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

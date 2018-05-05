@@ -26,10 +26,18 @@ textarea {
 
 .new-section-col-1 {
     width: 280px;
+    margin-top: 2%;
+    padding: 10px;
 }
 
 .new-section-col-2 {
     width: 600px;
+    margin-top: 2%;
+    padding: 10px;
+}
+.bordered-10 {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 10px;
 }
 
 #tableHeader {
