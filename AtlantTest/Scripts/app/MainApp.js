@@ -22,7 +22,7 @@ mainApp.controller('DetailsCtrl', function ($scope, DetailsService) {
         DetailsService.getDetails()
             .then(
                 function (response) {
-                    $scope.detailsData = response.data;
+                    $scope.detailsData = JSON.parse(response.data);
                     console.log($scope.detailsData);
                 }, function (error) {
                     console.log(error);

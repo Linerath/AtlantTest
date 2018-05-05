@@ -24,8 +24,16 @@ textarea {
 
 
 
-.new-section {
+.new-section-col-1 {
     width: 280px;
+}
+
+.new-section-col-2 {
+    width: 600px;
+}
+
+#tableHeader {
+    cursor: pointer;
 }
 
 .tabled-row {
