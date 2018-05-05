@@ -6,7 +6,6 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/angular")
     <link rel="stylesheet" href="~/Content/datepicker.min.css" />
 </head>
 <body ng-app="mainApp">
@@ -24,6 +23,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/angular")
     @Scripts.Render("~/bundles/angularApp")
     @RenderSection("scripts", required: false)
 </body>

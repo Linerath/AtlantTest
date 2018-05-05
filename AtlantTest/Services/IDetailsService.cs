@@ -11,5 +11,6 @@ namespace AtlantTest.Services
     {
         IEnumerable<Detail> GetAllDetails();
         IEnumerable<DetailModel> GetAllDetailsData();
+        void Add(Detail detail);
     }
 }

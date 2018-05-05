@@ -11,6 +11,12 @@ namespace AtlantTest.Repositories.Implementations
     {
         private EFDbContext context = new EFDbContext();
 
+        public void Add(Detail detail)
+        {
+            context.Details.Add(detail);
+            context.SaveChanges();
+        }
+
         public IQueryable<Detail> GetAll()
         {
             return context.Details.AsQueryable();

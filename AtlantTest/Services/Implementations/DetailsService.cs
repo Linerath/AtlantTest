@@ -19,6 +19,11 @@ namespace AtlantTest.Services.Implementations
             this.detailRepository = detailRepository;
         }
 
+        public void Add(Detail detail)
+        {
+            detailRepository.Add(detail);
+        }
+
         public IEnumerable<Detail> GetAllDetails()
         {
             return detailRepository.GetAll();
@@ -26,9 +31,6 @@ namespace AtlantTest.Services.Implementations
 
         public IEnumerable<DetailModel> GetAllDetailsData()
         {
-            //var details = detailRepository.GetAll()
-            //.Select(x => new DetailModel { Detail = x, Storekeeper = storekeeperRepository.Get(x.StorekeeperId) });
-
             var details = detailRepository.GetAll();
 
             List<DetailModel> models = new List<DetailModel>();
@@ -37,12 +39,13 @@ namespace AtlantTest.Services.Implementations
                 models.Add(new DetailModel
                 {
                     Detail = detail,
-                    //Storekeeper = storekeepers.FirstOrDefault(x => x.Id == detail.StorekeeperId)
                     Storekeeper = storekeeperRepository.Get(detail.StorekeeperId),
                 });
             }
 
             return models;
         }
+
+
     }
 }

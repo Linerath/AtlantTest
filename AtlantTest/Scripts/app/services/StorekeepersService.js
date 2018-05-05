@@ -5,13 +5,29 @@
         .module('mainApp')
         .factory('storekeepersService', storekeepersService);
 
-    storekeepersService.$inject = ['$http'];
+    storekeepersService.$inject = ['$http', '$q'];
 
-    function storekeepersService($http) {
+    function storekeepersService($http, $q) {
         var service = {};
+
         service.getStorekeepers = function () {
             return $http.get('/Storekeepers/GetAll');
         };
+
+        service.addStorekeeper = function (storekeeper) {
+            var deferred = $q.defer();
+            $http.post('/Storekeepers/Add', storekeeper)
+                .then(
+                    function (response) {
+                        console.log('service: success');
+                        deferred.resolve(response.data)
+                    }, function (error) {
+                        console.log(error);
+                        deferred.reject(error);
+                    });
+            return deferred.promise;
+        }
+
         return service;
-    }        
+    }
 })();

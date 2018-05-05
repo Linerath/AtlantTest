@@ -11,5 +11,6 @@ namespace AtlantTest.Repositories
     {
         IQueryable<Storekeeper> GetAll();
         Storekeeper Get(int Id);
+        void Add(Storekeeper storekeeper);
     }
 }

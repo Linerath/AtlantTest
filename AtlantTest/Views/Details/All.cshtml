@@ -2,82 +2,87 @@
     ViewBag.Title = "Home";
 }
 
+<div id="divCtrl" ng-controller="detailsCtrl">
 
-<div class="bordered-10 new-section-col-2" ng-controller="storekeepersCtrl">
-    
-    <h2>New detail</h2>
+    <div class="bordered-10 new-section-col-2">
 
-    <div class="form-row">
-        <div class="col">
-            <label for="cde" class="col-form-label">Nomeclature code</label>
-            <input id="code" name="code" type="text" class="form-control" placeholder="Nomenclature code" />
-        </div>
-        <div class="col">
-            <label for="storekeepers" class="col-form-label">Storekeeper</label>
-            <select id="storekeepers" class="form-control">
-                <option ng-repeat="s in storekeepersData">
-                    {{s.Storekeeper.Name + ' ' + s.Storekeeper.Surname}}
-                </option>
-            </select>
-        </div>
+        <h2>New detail</h2>
+
+        <form ng-submit="addDetail(detail)">
+            <div class="form-row">
+                <div class="col">
+                    <label for="cde" class="col-form-label">Nomeclature code *</label>
+                    <input id="code" name="code" type="text" class="form-control" ng-model="detail.nomenclatureCode" />
+                </div>
+                <div class="col">
+                    <label for="storekeepers" class="col-form-label">Storekeeper</label>
+                    <select id="storekeepers" class="form-control" ng-model="detail.storekeeperId">
+                        <option value="{{s.Storekeeper.Id}}" ng-repeat="s in detailsData">
+                            {{s.Storekeeper.Name + ' ' + s.Storekeeper.Surname}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col">
+                    <label for="name" class="col-form-label">Name *</label>
+                    <input id="name" name="name" type="text" class="form-control" ng-model="detail.name" />
+                </div>
+                <div class="col">
+                    <label for="quantity" class="col-form-label">Quantity</label>
+                    <input id="quantity" name="quantity" type="number" min="0" class="form-control" ng-model="detail.quantity" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="creationDate" class="col-form-label">Creation date *</label>
+                <input class="form-control" id="creationDate" data-timepicker="true" />
+                <input type="text" id="creationDateHidden" style="display: none"/>
+            </div>
+
+            <button type="submit" id="createDetail" class="btn btn-secondary"><i class="fa fa-plus-circle"></i> Create</button>
+        </form>
     </div>
 
-    <div class="form-row">
-        <div class="col">
-            <label for="name" class="col-form-label">Name</label>
-            <input id="name" name="name" type="text" class="form-control" placeholder="Name" />
+    <hr />
+
+    <div class="row tabled-row">
+        <div class="col col-sm-12 card p-0">
+
+            <div id="tableHeader" class="card-header form-inline" data-toggle="collapse" data-target="#detailsTable" aria-expanded="false">
+                <i id="panelInd" class="fa fa-plus"></i>
+                <h2 style="margin-left: 1%">All details</h2>
+            </div>
+
+            <div class="collapse" id="detailsTable">
+                <table class="table table-striped table-hover card-body" style="margin-bottom: 0px">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Nomenclature code</th>
+                            <th>Name</th>
+                            <th>Quantity</th>
+                            <th>Storekeeper name</th>
+                            <th>Creation date</th>
+                            <th>Delete date</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="d in detailsData">
+                            <td>{{d.Detail.NomenclatureCode}}</td>
+                            <td>{{d.Detail.Name}}</td>
+                            <td>{{d.Detail.Quantity}}</td>
+                            <td>{{d.Storekeeper.Name}}</td>
+                            <td>{{d.Detail.CreationDate}}</td>
+                            <td>{{d.Detail.DeleteDate}}</td>
+                            <td><a href="#"><i class="fa fa-minus-circle"></i></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
         </div>
-        <div class="col">
-            <label for="quantity" class="col-form-label">Quantity</label>
-            <input id="quantity" name="quantity" type="number" min="0" value="0" class="form-control" placeholder="Quantity" />
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="creationDate" class="col-form-label">Creation date</label>
-        <input class="form-control" id="creationDate" data-timepicker="true" />
-    </div>
-
-    <button class="btn btn-secondary"><i class="fa fa-plus-circle"></i> Create</button>
-</div>
-
-<hr />
-
-<div class="row tabled-row" ng-controller="detailsCtrl">
-    <div class="col col-sm-12 card p-0">
-
-        <div id="tableHeader" class="card-header form-inline" data-toggle="collapse" data-target="#detailsTable" aria-expanded="false">
-            <i id="panelInd" class="fa fa-plus"></i>
-            <h2 style="margin-left: 1%">All details</h2>
-        </div>
-
-        <div class="collapse" id="detailsTable">
-            <table class="table table-striped table-hover card-body" style="margin-bottom: 0px">
-                <thead class="table-dark">
-                    <tr>
-                        <th>Nomenclature code</th>
-                        <th>Name</th>
-                        <th>Quantity</th>
-                        <th>Storekeeper name</th>
-                        <th>Creation date</th>
-                        <th>Delete date</th>
-                        <th>Delete</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="d in detailsData">
-                        <td>{{d.Detail.NomenclatureCode}}</td>
-                        <td>{{d.Detail.Name}}</td>
-                        <td>{{d.Detail.Quantity}}</td>
-                        <td>{{d.Storekeeper.Name}}</td>
-                        <td>{{d.Detail.CreationDate}}</td>
-                        <td>{{d.Detail.DeleteDate}}</td>
-                        <td><a href="#"><i class="fa fa-minus-circle"></i></a></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
     </div>
 </div>
 
@@ -86,22 +91,29 @@
     <script src="~/Scripts/datepicker.min.js"></script>
 
     <script>
+
         $(document).ready(function () {
 
-            $(function () {
-                $("#creationDate").datepicker();
-                var datepicker = $('#creationDate').datepicker().data('datepicker');
-                datepicker.selectDate(new Date());
+            $("#creationDate").datepicker({
+                onSelect: function (fd, date) {
+                    var dt = $("#creationDate").val();
+                    $("#creationDateHidden").val(dt);
+                }
             });
+
+            var datepicker = $('#creationDate').datepicker().data('datepicker');
+            datepicker.selectDate(new Date());
 
             $("#creationDate").keypress(function (event) {
                 event.preventDefault();
                 return false;
             });
 
-            $("#creationDate").change(function (val) {
-                var date = $("#creationDate").val()
-                console.log(date);
+            $("#creationDateHidden").change(function () {
+                console.log('changing...');
+                //var date = $(this).val();
+                //console.log(date);
+                //angular.element('#divCtrl').scope().setCreationDate(date);
             });
 
             $("#tableHeader").click(function () {
@@ -115,6 +127,8 @@
                     i.addClass("fa-minus");
                 }
             });
+
         });
+
     </script>
 }

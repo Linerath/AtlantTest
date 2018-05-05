@@ -9,6 +9,8 @@
 
     function storekeepersCtrl($scope, storekeepersService) {
 
+        $scope.storekeeper = {};
+
         getStorekeepers();
 
         function getStorekeepers() {
@@ -20,6 +22,16 @@
                     }, function (error) {
                         console.log(error);
                     });
-        }
+        };
+
+        $scope.addStorekeeper = function (storekeeper) {
+            storekeepersService.addStorekeeper(storekeeper)
+                .then(
+                    function (response) {
+                        getStorekeepers();
+                    }, function (error) {
+                        console.log(error);
+                    });
+        };
     }
 })();

@@ -20,5 +20,11 @@ namespace AtlantTest.Repositories.Implementations
         {
             return context.Storekeepers.FirstOrDefault(x => x.Id == Id);
         }
+
+        public void Add(Storekeeper storekeeper)
+        {
+            context.Storekeepers.Add(storekeeper);
+            context.SaveChanges();
+        }
     }
 }

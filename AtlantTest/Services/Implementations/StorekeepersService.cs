@@ -19,6 +19,11 @@ namespace AtlantTest.Services.Implementations
             this.detailRepository = detailRepository;
         }
 
+        public void AddStorekeeper(Storekeeper storekeeper)
+        {
+            storekeeperRepository.Add(storekeeper);
+        }
+
         public IEnumerable<Storekeeper> GetAllStorekeepers()
         {
             return storekeeperRepository.GetAll();
@@ -31,10 +36,12 @@ namespace AtlantTest.Services.Implementations
             List<StorekeepersModel> models = new List<StorekeepersModel>();
             foreach (var storekeeper in storekeepers)
             {
+                var detail = detailRepository.GetByStorekeeperId(storekeeper.Id);
+                int quantity = detail != null ? detail.Quantity : 0;
                 models.Add(new StorekeepersModel
                 {
                     Storekeeper = storekeeper,
-                    DetailsQuantity = detailRepository.GetByStorekeeperId(storekeeper.Id).Quantity
+                    DetailsQuantity = quantity
                 });
             }
 

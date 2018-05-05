@@ -2,61 +2,66 @@
     ViewBag.Title = "Home";
 }
 
-<div class="bordered-10 new-section-col-1">
+<div ng-controller="storekeepersCtrl">
 
-    <h2>New storekeeper</h2>
+    <div class="bordered-10 new-section-col-1">
 
-    <div class="form-group">
-        <label for="name" class="col-form-label">Name</label>
-        <input id="name" name="name" type="text" class="form-control" placeholder="Name" />
+        <h2>New storekeeper</h2>
+
+        <form ng-submit="addStorekeeper(storekeeper)">
+            <div class="form-group">
+                <label for="name" class="col-form-label">Name *</label>
+                <input id="name" name="name" type="text" class="form-control" ng-model="storekeeper.name"/>
+            </div>
+
+            <div class="form-group">
+                <label for="surname" class="col-form-label">Surname *</label>
+                <input id="surname" name="surname" type="text" class="form-control" ng-model="storekeeper.surname"/>
+            </div>
+
+            <div class="form-group">
+                <label for="patronymic" class="col-form-label">Patronymic *</label>
+                <input id="patronymic" name="patronymic" type="text" class="form-control" ng-model="storekeeper.patronymic"/>
+            </div>
+
+            <button type="submit" class="btn btn-secondary"><i class="fa fa-user-plus"></i> Create</button>
+        </form>
     </div>
 
-    <div class="form-group">
-        <label for="surname" class="col-form-label">Surname</label>
-        <input id="surname" name="surname" type="text" class="form-control" placeholder="Surname" />
-    </div>
+    <hr />
 
-    <div class="form-group">
-        <label for="patronymic" class="col-form-label">Patronymic</label>
-        <input id="patronymic" name="patronymic" type="text" class="form-control" placeholder="Patronymic" />
-    </div>
+    <div class="row tabled-row">
+        <div class="col col-sm-12 card p-0">
 
-    <button class="btn btn-secondary"><i class="fa fa-user-plus"></i> Create</button>
-</div>
+            <div id="tableHeader" class="card-header form-inline" data-toggle="collapse" data-target="#detailsTable" aria-expanded="false">
+                <i id="panelInd" class="fa fa-plus"></i>
+                <h2 style="margin-left: 1%">All storekeepers</h2>
+            </div>
 
-<hr />
+            <div class="collapse" id="detailsTable">
+                <table class="table table-striped table-hover card-body" style="margin-bottom: 0px">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Name</th>
+                            <th>Surname</th>
+                            <th>Patronymic</th>
+                            <th>Details quantity</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="s in storekeepersData">
+                            <td>{{s.Storekeeper.Name}}</td>
+                            <td>{{s.Storekeeper.Surname}}</td>
+                            <td>{{s.Storekeeper.Patronymic}}</td>
+                            <td>{{s.DetailsQuantity}}</td>
+                            <td><a href="#"><i class="fa fa-user-times"></i></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-<div class="row tabled-row">
-    <div class="col col-sm-12 card p-0" ng-controller="storekeepersCtrl">
-
-        <div id="tableHeader" class="card-header form-inline" data-toggle="collapse" data-target="#detailsTable" aria-expanded="false">
-            <i id="panelInd" class="fa fa-plus"></i>
-            <h2 style="margin-left: 1%">All storekeepers</h2>
         </div>
-
-        <div class="collapse" id="detailsTable">
-            <table class="table table-striped table-hover card-body" style="margin-bottom: 0px">
-                <thead class="table-dark">
-                    <tr>
-                        <th>Name</th>
-                        <th>Surname</th>
-                        <th>Patronymic</th>
-                        <th>Details quantity</th>
-                        <th>Delete</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="s in storekeepersData">
-                        <td>{{s.Storekeeper.Name}}</td>
-                        <td>{{s.Storekeeper.Surname}}</td>
-                        <td>{{s.Storekeeper.Patronymic}}</td>
-                        <td>{{s.DetailsQuantity}}</td>
-                        <td><a href="#"><i class="fa fa-user-times"></i></a></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
     </div>
 </div>
 
