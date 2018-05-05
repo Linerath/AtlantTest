@@ -214,8 +214,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\angular.js" />
-    <Content Include="Scripts\app\DetailsApp.js" />
-    <Content Include="Scripts\app\StorekeepersApp.js" />
+    <Content Include="Scripts\app\MainApp.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
