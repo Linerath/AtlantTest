@@ -43,5 +43,31 @@ namespace AtlantTest.Controllers
             }
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         }
+
+        [HttpPost]
+        public JsonResult MarkDeleted(int detailId)
+        {
+            detailsService.MarkDeleted(detailId);
+            return Json(null);
+        }
+
+        [HttpPost]
+        public JsonResult Delete(int detailId)
+        {
+            detailsService.Delete(detailId);
+            return Json(null);
+        }
+
+        [HttpPost]
+        public HttpStatusCodeResult Update(Detail detail)
+        {
+            if (ModelState.IsValid)
+            {
+                detailsService.Update(detail);
+
+                return new HttpStatusCodeResult(HttpStatusCode.OK);
+            }
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
     }
 }

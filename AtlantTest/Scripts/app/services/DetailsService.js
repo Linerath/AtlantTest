@@ -26,6 +26,42 @@
             return deferred.promise;
         }
 
+        service.markDetailDeleted = function (detailId) {
+            var deferred = $q.defer();
+            $http.post('/Details/MarkDeleted', { detailId: detailId })
+                .then(
+                    function (response) {
+                        deferred.resolve(response.data);
+                    }, function (error) {
+                        deferred.reject(error);
+                    });
+            return deferred.promise;
+        }
+
+        service.deleteDetail = function (detailId) {
+            var deferred = $q.defer();
+            $http.post('/Details/Delete', { detailId: detailId })
+                .then(
+                    function (response) {
+                        deferred.resolve(response.data);
+                    }, function (error) {
+                        deferred.reject(error);
+                    });
+            return deferred.promise;
+        }
+
+        service.updateDetail = function (detail) {
+            var deferred = $q.defer();
+            $http.post('/Details/Update', detail)
+                .then(
+                    function (response) {
+                        deferred.resolve(response.data);
+                    }, function (error) {
+                        deferred.reject(error);
+                    });
+            return deferred.promise;
+        }
+
         return service;
     }
 })();

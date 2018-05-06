@@ -24,6 +24,21 @@ namespace AtlantTest.Services.Implementations
             detailRepository.Add(detail);
         }
 
+        public void Update(Detail detail)
+        {
+            detailRepository.Update(detail);
+        }
+
+        public void MarkDeleted(int detailId)
+        {
+            detailRepository.MarkDeleted(detailId);
+        }
+
+        public void Delete(int detailId)
+        {
+            detailRepository.Delete(detailId);
+        }
+
         public IEnumerable<Detail> GetAllDetails()
         {
             return detailRepository.GetAll();
@@ -52,7 +67,5 @@ namespace AtlantTest.Services.Implementations
 
             return model;
         }
-
-
     }
 }
