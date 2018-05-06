@@ -77,8 +77,11 @@
         };
 
         $scope.addDetailQuantity = function (detailId, quantity, index) {
-            if ($scope.allDetailsData[index].Detail.Quantity <= 1 && quantity < 0)
-                return;
+            $scope.block = true;
+            //if ($scope.allDetailsData[index].Detail.Quantity <= 1 && quantity < 0) {
+            //    console.log('rejected');
+            //    return;
+            //}
             detailsService.addDetailQuantity(detailId, quantity)
                 .then(
                     function (response) {
@@ -90,6 +93,7 @@
                                     if (dt.DeleteDate !== null)
                                         dt.DeleteDate = new Date(dt.DeleteDate).toLocaleString();
                                     $scope.allDetailsData[index].Detail = dt;
+                                    $scope.block = false;
                                 }, function (err) {
                                     console.log(err);
                                 });

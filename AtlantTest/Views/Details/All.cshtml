@@ -66,18 +66,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="d in allDetailsData">
+                        <tr ng-repeat="d in allDetailsData" ng-class="(d.Detail.DeleteDate != null) ? 'deleted-row' : ''">
                             <td>{{d.Detail.NomenclatureCode}}</td>
                             <td>{{d.Detail.Name}}</td>
                             <td>
-                                <button ng-click="addDetailQuantity(d.Detail.Id, -1, $index)" class="quantity-change fa fa-minus"></button>
+                                <button ng-click="addDetailQuantity(d.Detail.Id, -1, $index)" ng-hide="d.Detail.DeleteDate != null" ng-disabled="block || d.Detail.Quantity <= 1" class="quantity-change fa fa-minus"></button>
                                 {{d.Detail.Quantity}}
-                                <button ng-click="addDetailQuantity(d.Detail.Id, 1, $index)" class="quantity-change fa fa-plus"></button>
+                                <button ng-click="addDetailQuantity(d.Detail.Id, 1, $index)" ng-hide="d.Detail.DeleteDate != null"  class="quantity-change fa fa-plus"></button>
                             </td>
                             <td>{{d.Storekeeper.Name}}</td>
                             <td>{{d.Detail.CreationDate}}</td>
                             <td>{{d.Detail.DeleteDate}}</td>
-                            <td ng-hide="d.Detail.DeleteDate == null"><a href="#" ng-click="deleteDetail(d.Detail.Id)"><i class="fa fa-times" style="color: red"></i></a></td>
+                            <td ng-hide="d.Detail.DeleteDate == null"><a href="#" ng-click="deleteDetail(d.Detail.Id)"><i class="fa fa-times" style="color: black"></i></a></td>
                             <td ng-hide="d.Detail.DeleteDate != null"><a href="#" ng-click="markDetailDeleted(d.Detail.Id)"><i class="fa fa-minus-circle"></i></a></td>
                         </tr>
                     </tbody>

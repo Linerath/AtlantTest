@@ -35,6 +35,7 @@ textarea {
     margin-top: 2%;
     padding: 10px;
 }
+
 .bordered-10 {
     border: 1px solid rgba(0, 0, 0, 0.125);
     border-radius: 10px;
@@ -51,16 +52,22 @@ textarea {
     outline: 0px;
     background-color: transparent;
 }
-.quantity-change:focus {
-    outline: 0px;
-}
-.quantity-change:hover {
-    color: red;
-}
+
+    .quantity-change:focus {
+        outline: 0px;
+    }
+
+    .quantity-change:hover {
+        color: red;
+    }
 
 .tabled-row {
     padding-left: 1%;
     padding-right: 1%;
+}
+
+.deleted-row {
+    background-color: #f8d8d8 !important;
 }
 
 .row {
