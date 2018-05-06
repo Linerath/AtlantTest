@@ -26,5 +26,15 @@ namespace AtlantTest.Repositories.Implementations
             context.Storekeepers.Add(storekeeper);
             context.SaveChanges();
         }
+
+        public void Delete(int storekeeperId)
+        {
+            var storekeeper = context.Storekeepers.FirstOrDefault(x => x.Id == storekeeperId);
+            if (storekeeper != null)
+            {
+                context.Storekeepers.Remove(storekeeper);
+                context.SaveChanges();
+            }
+        }
     }
 }

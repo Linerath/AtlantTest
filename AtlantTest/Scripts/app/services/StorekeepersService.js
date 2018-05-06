@@ -19,7 +19,20 @@
             $http.post('/Storekeepers/Add', storekeeper)
                 .then(
                     function (response) {
-                        deferred.resolve(response.data)
+                        deferred.resolve(response.data);
+                    }, function (error) {
+                        console.log(error);
+                        deferred.reject(error);
+                    });
+            return deferred.promise;
+        }
+
+        service.deleteStorekeeper = function (storekeeperId) {
+            var deferred = $q.defer();
+            $http.post('/Storekeepers/Delete', { storekeeperId: storekeeperId })
+                .then(
+                function (response) {
+                        deferred.resolve(response.data);
                     }, function (error) {
                         console.log(error);
                         deferred.reject(error);

@@ -27,7 +27,6 @@
                                 allDetailsData[key].Detail.DeleteDate = new Date(allDetailsData[key].Detail.DeleteDate).toLocaleString();
                         }
                         $scope.allDetailsData = allDetailsData;
-                        //$scope.detail.storekeeperId = $scope.allStorekeepers[0].Id;
                     }, function (error) {
                         console.log(error);
                     });

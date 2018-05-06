@@ -42,5 +42,12 @@ namespace AtlantTest.Controllers
             }
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         }
+
+        [HttpPost]
+        public JsonResult Delete(int storekeeperId)
+        {
+            storekeepersService.DeleteStorekeeper(storekeeperId);
+            return Json(null);
+        }
     }
 }

@@ -13,5 +13,6 @@ namespace AtlantTest.Services
         IEnumerable<Storekeeper> GetAllStorekeepers();
         IEnumerable<StorekeepersModel> GetAllStorekeepersData();
         void AddStorekeeper(Storekeeper storekeeper);
+        void DeleteStorekeeper(int storekeeperId);
     }
 }

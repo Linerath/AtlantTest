@@ -24,6 +24,11 @@ namespace AtlantTest.Services.Implementations
             storekeeperRepository.Add(storekeeper);
         }
 
+        public void DeleteStorekeeper(int storekeeperId)
+        {
+            storekeeperRepository.Delete(storekeeperId);
+        }
+
         public IEnumerable<Storekeeper> GetAllStorekeepers()
         {
             return storekeeperRepository.GetAll();

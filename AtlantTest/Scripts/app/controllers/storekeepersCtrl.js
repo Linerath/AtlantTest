@@ -32,5 +32,15 @@
                         console.log(error);
                     });
         };
+
+        $scope.deleteStorekeeper = function (storekeeperId) {
+            storekeepersService.deleteStorekeeper(storekeeperId)
+                .then(
+                    function (response) {
+                        getStorekeepers();
+                    }, function (error) {
+                        console.log(error);
+                    });
+        };
     }
 })();

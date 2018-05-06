@@ -17,6 +17,16 @@ namespace AtlantTest.Repositories.Implementations
             context.SaveChanges();
         }
 
+        public void Delete(int detailId)
+        {
+            var detail = context.Details.FirstOrDefault(x => x.Id == detailId);
+            if (detail != null)
+            {
+                context.Details.Remove(detail);
+                context.SaveChanges();
+            }
+        }
+
         public IQueryable<Detail> GetAll()
         {
             return context.Details.AsQueryable();

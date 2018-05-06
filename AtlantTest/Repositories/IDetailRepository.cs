@@ -12,5 +12,6 @@ namespace AtlantTest.Repositories
         IQueryable<Detail> GetAll();
         Detail GetByStorekeeperId(int storekeeperId);
         void Add(Detail detail);
+        void Delete(int detailId);
     }
 }

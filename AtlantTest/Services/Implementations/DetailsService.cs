@@ -24,6 +24,11 @@ namespace AtlantTest.Services.Implementations
             detailRepository.Add(detail);
         }
 
+        public void DeleteDetail(int detailId)
+        {
+            detailRepository.Delete(detailId);
+        }
+
         public IEnumerable<Detail> GetAllDetails()
         {
             return detailRepository.GetAll();
