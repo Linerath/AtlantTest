@@ -34,7 +34,6 @@ namespace AtlantTest.Controllers
         [HttpPost]
         public HttpStatusCodeResult Add(Detail detail)
         {
-            var a = Request.Form["creationDate"];
             if (ModelState.IsValid)
             {
                 detailsService.Add(detail);

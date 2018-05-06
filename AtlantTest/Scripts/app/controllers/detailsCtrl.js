@@ -23,7 +23,7 @@
                         var allDetailsData = data.DetailsData;
                         for (var key in allDetailsData) {
                             allDetailsData[key].Detail.CreationDate = new Date(allDetailsData[key].Detail.CreationDate).toLocaleString();
-                            if (allDetailsData[key].Detail.DeleteDate != null)
+                            if (allDetailsData[key].Detail.DeleteDate !== null)
                                 allDetailsData[key].Detail.DeleteDate = new Date(allDetailsData[key].Detail.DeleteDate).toLocaleString();
                         }
                         $scope.allDetailsData = allDetailsData;
@@ -37,7 +37,7 @@
         }
 
         $scope.addDetail = function (detail) {
-            if (!detail.storekeeperId || detail.storekeeperId.toString().trim() == '')
+            if (!detail.storekeeperId || detail.storekeeperId.toString().trim() === '')
                 return;
             detailsService.addDetail(detail)
                 .then(function (response) {
