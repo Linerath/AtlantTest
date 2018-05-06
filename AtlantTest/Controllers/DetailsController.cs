@@ -27,8 +27,8 @@ namespace AtlantTest.Controllers
 
         public JsonResult GetAll()
         {
-            var details = detailsService.GetAllDetailsData();
-            return Json(JsonConvert.SerializeObject(details), JsonRequestBehavior.AllowGet);
+            var detailsData = detailsService.GetAllDetailsData();
+            return Json(JsonConvert.SerializeObject(detailsData), JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]

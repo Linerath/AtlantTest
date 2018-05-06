@@ -8,37 +8,35 @@
 
         <h2>New detail</h2>
 
-        <form ng-submit="addDetail(detail)">
+        <form name="newDetail" ng-submit="addDetail(detail)">
             <div class="form-row">
                 <div class="col">
-                    <label for="cde" class="col-form-label">Nomeclature code *</label>
-                    <input id="code" name="code" type="text" class="form-control" ng-model="detail.nomenclatureCode" />
+                    <label for="code" class="col-form-label">Nomeclature code</label>
+                    <input id="code" name="code" type="text" class="form-control" required ng-model="detail.nomenclatureCode" />
                 </div>
                 <div class="col">
                     <label for="storekeepers" class="col-form-label">Storekeeper</label>
-                    <select id="storekeepers" class="form-control" ng-model="detail.storekeeperId">
-                        <option value="{{s.Storekeeper.Id}}" ng-repeat="s in detailsData">
-                            {{s.Storekeeper.Name + ' ' + s.Storekeeper.Surname}}
-                        </option>
+                    <select id="storekeepers" class="form-control" required
+                            ng-model="detail.storekeeperId"
+                            ng-options="s.Id as (s.Name + ' ' + s.Surname) for s in allStorekeepers">
                     </select>
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="col">
-                    <label for="name" class="col-form-label">Name *</label>
-                    <input id="name" name="name" type="text" class="form-control" ng-model="detail.name" />
+                    <label for="name" class="col-form-label">Name</label>
+                    <input id="name" name="name" type="text" class="form-control" required ng-model="detail.name" />
                 </div>
                 <div class="col">
                     <label for="quantity" class="col-form-label">Quantity</label>
-                    <input id="quantity" name="quantity" type="number" min="0" class="form-control" ng-model="detail.quantity" />
+                    <input id="quantity" name="quantity" type="number" min="0" class="form-control" required ng-model="detail.quantity" />
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="creationDate" class="col-form-label">Creation date *</label>
+                <label for="creationDate" class="col-form-label">Creation date</label>
                 <input class="form-control" id="creationDate" data-timepicker="true" />
-                <input type="text" id="creationDateHidden" style="display: none"/>
             </div>
 
             <button type="submit" id="createDetail" class="btn btn-secondary"><i class="fa fa-plus-circle"></i> Create</button>
@@ -69,7 +67,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="d in detailsData">
+                        <tr ng-repeat="d in allDetailsData">
                             <td>{{d.Detail.NomenclatureCode}}</td>
                             <td>{{d.Detail.Name}}</td>
                             <td>{{d.Detail.Quantity}}</td>
@@ -97,8 +95,14 @@
             $("#creationDate").datepicker({
                 onSelect: function (fd, date) {
                     var dt = $("#creationDate").val();
-                    $("#creationDateHidden").val(dt);
+                    dt = dt.replace(/\./g, '-').replace(' ', 'T');
+                    dt = date.toJSON();
+                    angular.element("#divCtrl").scope().setCreationDate(dt);
                 }
+            });
+
+            $("#storekeepers").change(function () {
+                $(this).css("border-color", "rgb(206, 212, 218)");
             });
 
             var datepicker = $('#creationDate').datepicker().data('datepicker');
@@ -109,11 +113,10 @@
                 return false;
             });
 
-            $("#creationDateHidden").change(function () {
-                console.log('changing...');
-                //var date = $(this).val();
-                //console.log(date);
-                //angular.element('#divCtrl').scope().setCreationDate(date);
+            $("#createDetail").click(function () {
+                if ($("#storekeepers").find(":selected").text().trim() == "") {
+                    $("#storekeepers").css("border-color", "red");
+                }
             });
 
             $("#tableHeader").click(function () {

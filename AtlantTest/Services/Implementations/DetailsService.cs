@@ -29,21 +29,28 @@ namespace AtlantTest.Services.Implementations
             return detailRepository.GetAll();
         }
 
-        public IEnumerable<DetailModel> GetAllDetailsData()
+        public DetailsModel GetAllDetailsData()
         {
-            var details = detailRepository.GetAll();
-
-            List<DetailModel> models = new List<DetailModel>();
-            foreach (var detail in details)
+            var model = new DetailsModel
             {
-                models.Add(new DetailModel
+                Storekeepers = storekeeperRepository.GetAll()
+            };
+
+            var allDetails = detailRepository.GetAll();
+            List<DetailModel> detailsData = new List<DetailModel>();
+
+            foreach (var detailData in allDetails)
+            {
+                detailsData.Add(new DetailModel
                 {
-                    Detail = detail,
-                    Storekeeper = storekeeperRepository.Get(detail.StorekeeperId),
+                    Detail = detailData,
+                    Storekeeper = storekeeperRepository.Get(detailData.StorekeeperId),
                 });
             }
 
-            return models;
+            model.DetailsData = detailsData;
+
+            return model;
         }
 
 

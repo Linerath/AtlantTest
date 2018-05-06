@@ -18,7 +18,6 @@
                 .then(
                     function (response) {
                         $scope.storekeepersData = response.data;
-                        console.log($scope.storekeepersData);
                     }, function (error) {
                         console.log(error);
                     });

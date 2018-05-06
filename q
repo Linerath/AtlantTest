@@ -1,0 +1,83 @@
+[33mcommit 0597497a00d349d9fa9873521125d121b47df9eb[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Alexey Galyuk <linerath@mail.ru>
+Date:   Sun May 6 01:57:33 2018 +0300
+
+    Angular get/add logic
+
+[33mcommit 585f4bc8de345f9b63b9974e61dc0424df69f933[m
+Author: Alexey Galyuk <linerath@mail.ru>
+Date:   Sat May 5 20:23:39 2018 +0300
+
+    Divided angular module
+
+[33mcommit 02e56327cf1b6f2a686219aa14c14af90f765397[m
+Author: Alexey Galyuk <linerath@mail.ru>
+Date:   Sat May 5 15:19:03 2018 +0300
+
+    UI enhancements
+
+[33mcommit e13bf0c65902d3d5c61f55c1170839ea06d12e91[m
+Author: Alexey Galyuk <linerath@mail.ru>
+Date:   Sat May 5 12:34:01 2018 +0300
+
+    Relocated angular controllers
+
+[33mcommit f608dd990d774fd162b9ecd42a574e2c0a06474c[m
+Author: Alexey Galyuk <linerath@mail.ru>
+Date:   Sat May 5 11:53:37 2018 +0300
+
+    Added services, UI changes
+
+[33mcommit 7ed54353575ed5919b9f6a9d2587e20ba00d53bb[m
+Author: Alexey Galyuk <linerath@mail.ru>
+Date:   Sat May 5 00:22:02 2018 +0300
+
+    Changed entites and UI
+
+[33mcommit 485283229a3a377ea6ada30739af380908e86a2e[m
+Author: Alexey Galyuk <linerath@mail.ru>
+Date:   Fri May 4 21:22:57 2018 +0300
+
+    Updated bootstrap
+
+[33mcommit fb196f89ee1c0e8cef63dacd16b8531da05753e1[m
+Author: Alexey Galyuk <linerath@mail.ru>
+Date:   Fri May 4 19:23:01 2018 +0300
+
+    Added repositories
+
+[33mcommit 3e957f512ba83676671f250994750518c9846670[m
+Author: Alexey Galyuk <linerath@mail.ru>
+Date:   Fri May 4 16:52:02 2018 +0300
+
+    Added Ninject and Repository
+
+[33mcommit a6a8be290951e4da4ce5c392d17ed0fc9540b733[m
+Author: Alexey Galyuk <linerath@mail.ru>
+Date:   Fri May 4 16:31:05 2018 +0300
+
+    Entity changes
+
+[33mcommit 6bd793912a49c59f2a54fa2d085d067ef9806ce0[m
+Author: Alexey Galyuk <linerath@mail.ru>
+Date:   Fri May 4 16:14:21 2018 +0300
+
+    Added EF and DbContext
+
+[33mcommit c7eaaa31dc4496125569feb7f1b5ba3ef5a2144e[m
+Author: Alexey Galyuk <linerath@mail.ru>
+Date:   Fri May 4 12:51:16 2018 +0300
+
+    Added angularjs
+
+[33mcommit 467c7a4ab0bb62b65eeff6fe0e3965b190d86f69[m
+Author: Alexey Galyuk <linerath@mail.ru>
+Date:   Fri May 4 12:46:22 2018 +0300
+
+    Added entities
+
+[33mcommit 55b6600dd54bc812e47438f3c0493ac2794bf35e[m
+Author: Alexey Galyuk <linerath@mail.ru>
+Date:   Fri May 4 12:38:36 2018 +0300
+
+    Repo init

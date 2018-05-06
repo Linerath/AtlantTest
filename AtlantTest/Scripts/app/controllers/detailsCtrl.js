@@ -18,25 +18,31 @@
             detailsService.getDetails()
                 .then(
                     function (response) {
-                        $scope.detailsData = JSON.parse(response.data);
-                        console.log($scope.detailsData);
+                        var data = JSON.parse(response.data);
+                        $scope.allStorekeepers = data.Storekeepers;
+                        var allDetailsData = data.DetailsData
+                        for (var key in allDetailsData) {
+                            allDetailsData[key].Detail.CreationDate = new Date(allDetailsData[key].Detail.CreationDate).toLocaleString();
+                            if (allDetailsData[key].Detail.DeleteDate != null)
+                                allDetailsData[key].Detail.DeleteDate = new Date(allDetailsData[key].Detail.DeleteDate).toLocaleString();
+                        }
+                        $scope.allDetailsData = allDetailsData;
+                        //$scope.detail.storekeeperId = $scope.allStorekeepers[0].Id;
                     }, function (error) {
                         console.log(error);
                     });
         }
 
         $scope.setCreationDate = function (date) {
-            console.log('hi');
             $scope.detail.creationDate = date;
         }
 
         $scope.addDetail = function (detail) {
-            console.log(detail);
-            return;
+            if (!detail.storekeeperId || detail.storekeeperId.toString().trim() == '')
+                return;
             detailsService.addDetail(detail)
                 .then(function (response) {
-                    //getDetails();
-                    console.log('success: ctrl');
+                    getDetails();
                 }, function (error) {
                     console.log(error);
                 });

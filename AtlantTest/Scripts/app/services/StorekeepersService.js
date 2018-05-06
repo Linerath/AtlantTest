@@ -19,7 +19,6 @@
             $http.post('/Storekeepers/Add', storekeeper)
                 .then(
                     function (response) {
-                        console.log('service: success');
                         deferred.resolve(response.data)
                     }, function (error) {
                         console.log(error);

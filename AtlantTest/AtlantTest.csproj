@@ -173,6 +173,7 @@
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DetailModel.cs" />
+    <Compile Include="Models\DetailsModel.cs" />
     <Compile Include="Models\StorekeepersModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IDetailRepository.cs" />

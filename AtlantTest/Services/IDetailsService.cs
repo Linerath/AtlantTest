@@ -10,7 +10,7 @@ namespace AtlantTest.Services
     public interface IDetailsService
     {
         IEnumerable<Detail> GetAllDetails();
-        IEnumerable<DetailModel> GetAllDetailsData();
+        DetailsModel GetAllDetailsData();
         void Add(Detail detail);
     }
 }
