@@ -49,6 +49,11 @@ namespace AtlantTest.Repositories.Implementations
             return context.Details.AsQueryable();
         }
 
+        public Detail GetById(int detailId)
+        {
+            return context.Details.FirstOrDefault(x => x.Id == detailId);
+        }
+
         public IQueryable<Detail> GetByStorekeeperId(int storekeeperId)
         {
             return context.Details.Where(x => x.StorekeeperId == storekeeperId);

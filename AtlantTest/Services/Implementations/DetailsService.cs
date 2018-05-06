@@ -44,6 +44,11 @@ namespace AtlantTest.Services.Implementations
             return detailRepository.GetAll();
         }
 
+        public Detail GetDetailById(int detailId)
+        {
+            return detailRepository.GetById(detailId);
+        }
+
         public DetailsModel GetAllDetailsData()
         {
             var model = new DetailsModel
@@ -66,6 +71,16 @@ namespace AtlantTest.Services.Implementations
             model.DetailsData = detailsData;
 
             return model;
+        }
+
+        public void AddQuantity(int detailId, int quantity)
+        {
+            var detail = detailRepository.GetById(detailId);
+            if (detail != null)
+            {
+                detail.Quantity += quantity;
+                Update(detail);
+            }
         }
     }
 }

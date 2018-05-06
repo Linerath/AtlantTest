@@ -31,6 +31,13 @@ namespace AtlantTest.Controllers
             return Json(JsonConvert.SerializeObject(detailsData), JsonRequestBehavior.AllowGet);
         }
 
+        [HttpGet]
+        public JsonResult Get(int detailId)
+        {
+            var detail = detailsService.GetDetailById(detailId);
+            return Json(JsonConvert.SerializeObject(detail), JsonRequestBehavior.AllowGet);
+        }
+
         [HttpPost]
         public HttpStatusCodeResult Add(Detail detail)
         {
@@ -67,6 +74,12 @@ namespace AtlantTest.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.OK);
             }
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
+
+        [HttpPost]
+        public void AddQuantity(int detailId, int quantity)
+        {
+            detailsService.AddQuantity(detailId, quantity);
         }
     }
 }

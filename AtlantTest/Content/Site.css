@@ -44,6 +44,20 @@ textarea {
     cursor: pointer;
 }
 
+.quantity-change {
+    cursor: pointer;
+    color: blue;
+    border: 0px;
+    outline: 0px;
+    background-color: transparent;
+}
+.quantity-change:focus {
+    outline: 0px;
+}
+.quantity-change:hover {
+    color: red;
+}
+
 .tabled-row {
     padding-left: 1%;
     padding-right: 1%;

@@ -18,8 +18,7 @@
                     <label for="storekeepers" class="col-form-label">Storekeeper</label>
                     <select id="storekeepers" class="form-control" required
                             ng-model="detail.storekeeperId"
-                            ng-options="s.Id as (s.Name + ' ' + s.Surname) for s in allStorekeepers">
-                    </select>
+                            ng-options="s.Id as (s.Name + ' ' + s.Surname) for s in allStorekeepers"></select>
                 </div>
             </div>
 
@@ -53,7 +52,7 @@
                 <h2 style="margin-left: 1%">All details</h2>
             </div>
 
-            <div class="collapse" id="detailsTable" >
+            <div class="collapse" id="detailsTable">
                 <table class="table table-striped table-hover card-body" style="margin-bottom: 0px">
                     <thead class="table-dark">
                         <tr>
@@ -70,7 +69,11 @@
                         <tr ng-repeat="d in allDetailsData">
                             <td>{{d.Detail.NomenclatureCode}}</td>
                             <td>{{d.Detail.Name}}</td>
-                            <td>{{d.Detail.Quantity}}</td>
+                            <td>
+                                <button ng-click="addDetailQuantity(d.Detail.Id, -1, $index)" class="quantity-change fa fa-minus"></button>
+                                {{d.Detail.Quantity}}
+                                <button ng-click="addDetailQuantity(d.Detail.Id, 1, $index)" class="quantity-change fa fa-plus"></button>
+                            </td>
                             <td>{{d.Storekeeper.Name}}</td>
                             <td>{{d.Detail.CreationDate}}</td>
                             <td>{{d.Detail.DeleteDate}}</td>

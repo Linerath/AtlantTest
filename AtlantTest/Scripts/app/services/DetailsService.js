@@ -14,6 +14,10 @@
             return $http.get('/Details/GetAll');
         };
 
+        service.getDetail = function (detailId) {
+            return $http.get('/Details/Get?detailId=' + detailId);
+        };
+
         service.addDetail = function (detail) {
             var deferred = $q.defer();
             $http.post('/Details/Add', detail)
@@ -24,7 +28,7 @@
                         deferred.reject(error);
                     });
             return deferred.promise;
-        }
+        };
 
         service.markDetailDeleted = function (detailId) {
             var deferred = $q.defer();
@@ -36,7 +40,7 @@
                         deferred.reject(error);
                     });
             return deferred.promise;
-        }
+        };
 
         service.deleteDetail = function (detailId) {
             var deferred = $q.defer();
@@ -48,7 +52,7 @@
                         deferred.reject(error);
                     });
             return deferred.promise;
-        }
+        };
 
         service.updateDetail = function (detail) {
             var deferred = $q.defer();
@@ -60,7 +64,19 @@
                         deferred.reject(error);
                     });
             return deferred.promise;
-        }
+        };
+
+        service.addDetailQuantity = function (detailId, quantity) {
+            var deferred = $q.defer();
+            $http.post('/Details/AddQuantity', { detailId: detailId, quantity: quantity })
+                .then(
+                    function (response) {
+                        deferred.resolve(response.data);
+                    }, function (error) {
+                        deferred.reject(error);
+                    });
+            return deferred.promise;
+        };
 
         return service;
     }
