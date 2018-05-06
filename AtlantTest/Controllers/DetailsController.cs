@@ -50,18 +50,18 @@ namespace AtlantTest.Controllers
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         }
 
-        [HttpPost]
+        [HttpGet]
         public JsonResult MarkDeleted(int detailId)
         {
             detailsService.MarkDeleted(detailId);
-            return Json(null);
+            return Json(null, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpPost]
+        [HttpGet]
         public JsonResult Delete(int detailId)
         {
             detailsService.Delete(detailId);
-            return Json(null);
+            return Json(null, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]

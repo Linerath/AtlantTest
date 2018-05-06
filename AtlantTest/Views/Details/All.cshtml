@@ -15,7 +15,7 @@
                     <input id="code" name="code" type="text" class="form-control" required ng-model="detail.nomenclatureCode" />
                 </div>
                 <div class="col">
-                    <label for="storekeepers" class="col-form-label">Storekeeper</label>
+                    <label id="lStorekeepers" for="storekeepers" class="col-form-label">Storekeeper</label>
                     <select id="storekeepers" class="form-control" required
                             ng-model="detail.storekeeperId"
                             ng-options="s.Id as (s.Name + ' ' + s.Surname) for s in allStorekeepers"></select>
@@ -48,7 +48,7 @@
         <div class="col col-sm-12 card p-0">
 
             <div id="tableHeader" class="card-header form-inline" data-toggle="collapse" data-target="#detailsTable" aria-expanded="false">
-                <i id="panelInd" class="fa fa-plus"></i>
+                <i id="panelInd" class="fa fa-minus"></i>
                 <h2 style="margin-left: 1%">All details</h2>
             </div>
 
@@ -66,7 +66,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="d in allDetailsData" ng-class="(d.Detail.DeleteDate != null) ? 'deleted-row' : ''">
+                        <tr ng-repeat="d in pagedDetailsData" ng-class="(d.Detail.DeleteDate != null) ? 'deleted-row' : ''">
                             <td>{{d.Detail.NomenclatureCode}}</td>
                             <td>{{d.Detail.Name}}</td>
                             <td>
@@ -78,10 +78,30 @@
                             <td>{{d.Detail.CreationDate}}</td>
                             <td>{{d.Detail.DeleteDate}}</td>
                             <td ng-hide="d.Detail.DeleteDate == null"><a href="#" ng-click="deleteDetail(d.Detail.Id)"><i class="fa fa-times" style="color: black"></i></a></td>
-                            <td ng-hide="d.Detail.DeleteDate != null"><a href="#" ng-click="markDetailDeleted(d.Detail.Id)"><i class="fa fa-minus-circle"></i></a></td>
+                            <td ng-hide="d.Detail.DeleteDate != null"><a href="#" ng-click="markDetailDeleted(d.Detail.Id, $index)"><i class="fa fa-minus-circle"></i></a></td>
                         </tr>
                     </tbody>
                 </table>
+
+                <div>
+                    <ul ng-if="pageInfo.totalItems > 0" class="pagination justify-content-center">
+                        <li class="page-item" ng-class="(pageInfo.currentPage === 1) ? 'disabled' : ''">
+                            <a class="page-link" ng-click="setPage(1)">First</a>
+                        </li>
+                        <li class="page-item" ng-class="(pageInfo.currentPage === 1) ? 'disabled' : ''">
+                            <a class="page-link" ng-click="setPage(pageInfo.currentPage - 1)">Previous</a>
+                        </li>
+                        <li class="page-item" ng-repeat="page in pageInfo.pages" ng-class="(pageInfo.currentPage === page) ? 'active' : ''">
+                            <a class="page-link" ng-click="setPage(page)">{{page}}</a>
+                        </li>
+                        <li class="page-item" ng-class="(pageInfo.currentPage === pageInfo.totalPages) ? 'disabled' : ''">
+                            <a class="page-link" ng-click="setPage(pageInfo.currentPage + 1)">Next</a>
+                        </li>
+                        <li class="page-item" ng-class="(pageInfo.currentPage === pageInfo.totalPages) ? 'disabled': ''">
+                            <a class="page-link" ng-click="setPage(pageInfo.totalPages)">Last</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
         </div>
@@ -96,6 +116,8 @@
 
         $(document).ready(function () {
 
+            $(".collapse").collapse('show');
+
             $("#creationDate").datepicker({
                 onSelect: function (fd, date) {
                     var dt = $("#creationDate").val();
@@ -107,6 +129,7 @@
 
             $("#storekeepers").change(function () {
                 $(this).css("border-color", "rgb(206, 212, 218)");
+                $("#lStorekeepers").css("color", "#212529");
             });
 
             var datepicker = $('#creationDate').datepicker().data('datepicker');
@@ -120,6 +143,7 @@
             $("#createDetail").click(function () {
                 if ($("#storekeepers").find(":selected").text().trim() == "") {
                     $("#storekeepers").css("border-color", "red");
+                    $("#lStorekeepers").css("color", "red");
                 }
             });
 

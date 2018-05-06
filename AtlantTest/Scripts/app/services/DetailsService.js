@@ -32,7 +32,7 @@
 
         service.markDetailDeleted = function (detailId) {
             var deferred = $q.defer();
-            $http.post('/Details/MarkDeleted', { detailId: detailId })
+            $http.get('/Details/MarkDeleted?detailId=' + detailId)
                 .then(
                     function (response) {
                         deferred.resolve(response.data);
@@ -44,7 +44,7 @@
 
         service.deleteDetail = function (detailId) {
             var deferred = $q.defer();
-            $http.post('/Details/Delete', { detailId: detailId })
+            $http.get('/Details/Delete?detailId=' + detailId)
                 .then(
                     function (response) {
                         deferred.resolve(response.data);

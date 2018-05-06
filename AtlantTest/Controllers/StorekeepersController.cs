@@ -43,11 +43,11 @@ namespace AtlantTest.Controllers
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         }
 
-        [HttpPost]
+        [HttpGet]
         public JsonResult Delete(int storekeeperId)
         {
             storekeepersService.DeleteStorekeeper(storekeeperId);
-            return Json(null);
+            return Json(null, JsonRequestBehavior.AllowGet);
         }
     }
 }

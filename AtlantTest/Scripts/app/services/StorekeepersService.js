@@ -29,7 +29,7 @@
 
         service.deleteStorekeeper = function (storekeeperId) {
             var deferred = $q.defer();
-            $http.post('/Storekeepers/Delete', { storekeeperId: storekeeperId })
+            $http.get('/Storekeepers/Delete?storekeeperId=' + storekeeperId)
                 .then(
                 function (response) {
                         deferred.resolve(response.data);

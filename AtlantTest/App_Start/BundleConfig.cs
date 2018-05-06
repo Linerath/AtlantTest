@@ -28,6 +28,7 @@ namespace AtlantTest
                         "~/Scripts/app/mainApp.js",
                         "~/Scripts/app/services/detailsService.js",
                         "~/Scripts/app/services/storekeepersService.js",
+                        "~/Scripts/app/services/paginationService.js",
                         "~/Scripts/app/controllers/detailsCtrl.js",
                         "~/Scripts/app/controllers/storekeepersCtrl.js"
                         ));

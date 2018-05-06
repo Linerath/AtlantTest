@@ -34,7 +34,7 @@
         <div class="col col-sm-12 card p-0">
 
             <div id="tableHeader" class="card-header form-inline" data-toggle="collapse" data-target="#detailsTable" aria-expanded="false">
-                <i id="panelInd" class="fa fa-plus"></i>
+                <i id="panelInd" class="fa fa-minus"></i>
                 <h2 style="margin-left: 1%">All storekeepers</h2>
             </div>
 
@@ -50,7 +50,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="s in storekeepersData">
+                        <tr ng-repeat="s in pagedStorekeepersData">
                             <td>{{s.Storekeeper.Name}}</td>
                             <td>{{s.Storekeeper.Surname}}</td>
                             <td>{{s.Storekeeper.Patronymic}}</td>
@@ -59,6 +59,26 @@
                         </tr>
                     </tbody>
                 </table>
+
+                <div>
+                    <ul ng-if="pageInfo.totalItems > 0" class="pagination justify-content-center">
+                        <li class="page-item" ng-class="(pageInfo.currentPage === 1) ? 'disabled' : ''">
+                            <a class="page-link" ng-click="setPage(1)">First</a>
+                        </li>
+                        <li class="page-item" ng-class="(pageInfo.currentPage === 1) ? 'disabled' : ''">
+                            <a class="page-link" ng-click="setPage(pageInfo.currentPage - 1)">Previous</a>
+                        </li>
+                        <li class="page-item" ng-repeat="page in pageInfo.pages" ng-class="(pageInfo.currentPage === page) ? 'active' : ''">
+                            <a class="page-link" ng-click="setPage(page)">{{page}}</a>
+                        </li>
+                        <li class="page-item" ng-class="(pageInfo.currentPage === pageInfo.totalPages) ? 'disabled' : ''">
+                            <a class="page-link" ng-click="setPage(pageInfo.currentPage + 1)">Next</a>
+                        </li>
+                        <li class="page-item" ng-class="(pageInfo.currentPage === pageInfo.totalPages) ? 'disabled': ''">
+                            <a class="page-link" ng-click="setPage(pageInfo.totalPages)">Last</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
         </div>
@@ -70,6 +90,8 @@
     <script>
 
         $(document).ready(function () {
+
+            $(".collapse").collapse('show');
 
             $("#tableHeader").click(function () {
                 var i = $("#panelInd");
