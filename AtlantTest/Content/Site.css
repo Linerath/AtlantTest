@@ -81,3 +81,13 @@ thead:hover {
 .pagination {
     margin-top: 2%;
 }
+
+@media screen and (max-width: 685px) {
+    .form-row {
+        display: block;
+    }
+
+    .new-section-col-2 {
+        width: 280px;
+    }
+}
